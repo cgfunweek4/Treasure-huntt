@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+
+<html lang="id" style="--bg: #002f7a; --surface: #000000; --card: #000000; --ink: #ffffff; --accent: #c2c2c2; --font: 'Trebuchet MS',sans-serif; --radius: 35px;"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>THE FIVE PIECES | Opening</title>
+<style>
+:root{--bg:#0b1023;--surface:#151e38;--card:#1c2948;--ink:#f7f6ff;--muted:#b7c4db;--accent:#e8c98a;--radius:24px;--font:Georgia,serif}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);min-height:100vh}
+button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.frame{max-width:1020px;margin:auto;padding:22px 18px 50px}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{font-family:system-ui,sans-serif;font-weight:750;font-size:12px;letter-spacing:.18em;color:var(--accent)}
+.toolbar{display:flex;gap:7px;flex-wrap:wrap}.toolbar button{border:1px solid #ffffff40;background:var(--surface);color:var(--ink);padding:9px 12px;border-radius:12px;font:600 13px system-ui,sans-serif}
+.toolbar .on{background:var(--accent);color:#111c31}
+.progress{display:flex;gap:8px;margin:28px 0 14px}.progress span{height:5px;border-radius:10px;background:#ffffff2a;flex:1}.progress span.current{background:var(--accent)}
+.kicker{font:700 12px system-ui,sans-serif;letter-spacing:.24em;color:var(--accent);margin:20px 0}
+.stage{background:linear-gradient(145deg,var(--surface),var(--card));border:1px solid #ffffff2a;border-radius:var(--radius);padding:clamp(24px,6vw,65px);min-height:440px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.stage:before{content:"✦";position:absolute;font-size:190px;right:-12px;top:-75px;color:#ffffff09;pointer-events:none}
+.page{display:none;position:relative}.page.active{display:block}
+.big{font-size:clamp(36px,7vw,76px);line-height:1.06;letter-spacing:-.035em;margin:10px 0 22px;max-width:770px}
+.sub{font:500 clamp(16px,2.4vw,20px)/1.7 system-ui,sans-serif;color:var(--muted);max-width:720px;white-space:pre-wrap}
+.linkbutton,.next{display:inline-flex;align-items:center;justify-content:center;min-height:49px;padding:13px 22px;border-radius:13px;border:0;background:var(--accent);color:#142038;text-decoration:none;font:750 15px system-ui,sans-serif}
+.linkbutton{margin-top:24px}.linkbutton.disabled{opacity:.55;cursor:not-allowed}
+.stepnav{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:18px}.back{background:transparent;color:var(--ink);border:1px solid #ffffff55;padding:13px 18px;border-radius:13px;font:650 14px system-ui,sans-serif}.next{cursor:pointer}
+.small{font:13px/1.5 system-ui,sans-serif;color:var(--muted);margin-top:16px}
+.editor{display:none;background:#f4f1e9;color:#1c2841;border-radius:18px;padding:20px;margin:20px 0;font:14px system-ui,sans-serif}.editing .editor{display:block}
+.editor h2{margin:0 0 10px;font-size:20px}.editor p{color:#4d596b}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.editor label{display:grid;gap:6px;font-weight:650}.editor input,.editor select{padding:11px;border:1px solid #a9b0bd;border-radius:10px;min-width:0;background:white;color:#19233b}
+.editor .row{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.editor button{background:#1c2948;color:white;border:0;border-radius:10px;padding:10px 12px}
+.editing [data-edit]{outline:1px dashed var(--accent);outline-offset:5px;border-radius:3px;cursor:text}
+.editing [data-edit]:focus{outline:2px solid var(--accent)}
+#toast{font:13px system-ui,sans-serif;color:var(--muted);margin:12px 0;min-height:20px}
+footer{text-align:center;color:var(--muted);font:12px system-ui,sans-serif;padding:26px}
+@media(max-width:540px){.grid{grid-template-columns:1fr}.stage{min-height:480px}.toolbar button{padding:8px}.big{font-size:clamp(35px,10vw,53px)}}
+</style><style>
+/* Participant-only: editor controls never displayed */
+.toolbar,.tools,.editor,#editToggle,#edit,#save,#download,#export,#backup,#import,#reset,#participant{display:none!important}
+.editing [data-field],.editing [data-edit]{outline:none!important;cursor:inherit!important}
+</style></head><body class=""><div class="frame">
+<header><div class="brand" contenteditable="false" data-edit="brand" spellcheck="false">𝐑𝐔𝐍𝐍𝐈𝐍𝐆 𝐇𝐔𝐍𝐓 : THE FIVE PIECES</div><div class="toolbar"><button id="editToggle" type="button">✏️ Edit semua</button><button id="save" type="button">💾 Simpan</button><button id="export" type="button">⬇️ Download HTML</button><button id="backup" type="button">📦 Backup JSON</button><button id="import" type="button">⬆️ Impor</button><input accept=".json" hidden="" id="file" type="file"/></div></header>
+<section class="editor" id="editor"><h2>🎨 Panel desain &amp; navigasi</h2><p>Semua tulisan bergaris putus-putus bisa langsung diklik dan diubah. Atur juga warna, font, nama tombol, dan link grup WA di sini.</p><div class="grid">
+<label>Link undangan grup WhatsApp <input id="waLink" placeholder="https://chat.whatsapp.com/..." type="url"/></label>
+<label>Warna latar <input id="bg" type="color"/></label><label>Warna panel <input id="surface" type="color"/></label><label>Warna kartu <input id="card" type="color"/></label><label>Warna teks <input id="ink" type="color"/></label><label>Warna tombol/aksen <input id="accent" type="color"/></label>
+<label>Jenis font <select id="font"><option value="Georgia,serif">Elegan / Georgia</option><option value="system-ui,sans-serif">Modern / System</option><option value="Arial,sans-serif">Arial</option><option value="'Trebuchet MS',sans-serif">Trebuchet</option></select></label>
+<label>Lengkungan kartu <input id="radius" max="48" min="0" type="range"/></label></div>
+<div class="row"><button id="reset" type="button">↺ Reset ke awal</button><button id="clear" type="button">🧹 Hapus data tersimpan</button></div>
+</section>
+<div class="progress"><span class="current"></span><span class=""></span><span class=""></span></div>
+<section class="stage">
+<article class="page active" data-page="0"><div class="kicker" contenteditable="false" data-edit="p0k" spellcheck="false">STEP 01 / JOIN THE TEAM</div><h1 class="big" contenteditable="false" data-edit="p0h" spellcheck="false">𝕋𝕙𝕖 𝔾𝕒𝕞𝕖 𝕊𝕥𝕒𝕣𝕥𝕤 ℍ𝕖𝕣𝕖.</h1><div class="sub" contenteditable="false" data-edit="p0b" spellcheck="false">𝐁𝐞𝐟𝐨𝐫𝐞 𝐬𝐭𝐚𝐫𝐭𝐢𝐧𝐠 𝐭𝐡𝐞 𝐠𝐚𝐦𝐞, 𝐩𝐥𝐞𝐚𝐬𝐞 𝐣𝐨𝐢𝐧 𝐭𝐡𝐞 𝐖𝐡𝐚𝐭𝐬𝐀𝐩𝐩 𝐆𝐫𝐨𝐮𝐩. 𝐀𝐥𝐥 𝐭𝐡𝐞 𝐝𝐢𝐫𝐞𝐜𝐭𝐢𝐨𝐧 &amp; 𝐢𝐧𝐟𝐨 𝐰𝐢𝐥𝐥 𝐛𝐞 𝐜𝐨𝐦𝐦𝐮𝐧𝐢𝐜𝐚𝐭𝐞𝐝 𝐭𝐡𝐞𝐫𝐞. </div><a aria-disabled="false" class="linkbutton" href="https://chat.whatsapp.com/GkcHrnjDP7sIsY7UEXOXa0?s=cl&amp;p=a&amp;mlu=4&amp;ilr=4&amp;iam=0" id="waButton" rel="noopener noreferrer" target="_blank"><span contenteditable="false" data-edit="waText" spellcheck="false">JOIN WHATSAPP GROUP ↗</span></a><div class="small" contenteditable="false" data-edit="p0note" spellcheck="false">𝐀𝐟𝐭𝐞𝐫 𝐣𝐨𝐢𝐧𝐢𝐧𝐠, 𝐩𝐥𝐞𝐚𝐬𝐞 𝐜𝐨𝐦𝐞 𝐛𝐚𝐜𝐤 𝐚𝐧𝐝 𝐩𝐫𝐞𝐬𝐬 𝐍𝐄𝐗𝐓. </div></article>
+<article class="page" data-page="1"><div class="kicker" contenteditable="false" data-edit="p1k" spellcheck="false">STEP 02 / THE MISSION</div><h1 class="big" contenteditable="false" data-edit="p1h" spellcheck="false">ℍ𝔼𝕃𝕃𝕆! :𝔻</h1><div class="sub" contenteditable="false" data-edit="p1b" spellcheck="false">Welcome to THE FIVE PIECES! You will be divided into TWO TEAMS. This is a GROUP challenge, not an individual game. Work together with your teammates to discover clues, solve Bible riddles, and collect five message pieces across five locations. Every team member has a role. Stay together, listen to your Game Master, and help one another. Each team must collect its own five pieces and complete the final mission together. Good luck, Team 1 and Team 2!</div></article>
+<article class="page" data-page="2"><div class="kicker" contenteditable="false" data-edit="p2k" spellcheck="false">STEP 03 / YOUR FIRST DESTINATION</div><h1 class="big" contenteditable="false" data-edit="p2h" spellcheck="false">𝟙𝕤𝕥 ℙ𝕠𝕤𝕥 : 𝕋ℍ𝔼 𝕊𝔼𝔼𝔻</h1><div class="sub" contenteditable="false" data-edit="p2b" spellcheck="false">𝐏𝐎𝐒𝐓 𝐂𝐋𝐔𝐄:<br/>I can't speak, but inside me, countless stories are unfolding in the form of writing. Millions of words are poured out of my body.</div><div class="small" contenteditable="false" data-edit="p2note" spellcheck="false">𝐇𝐚𝐩𝐩𝐲 𝐬𝐞𝐚𝐫𝐜𝐡𝐢𝐧𝐠! 𝐖𝐡𝐞𝐧 𝐲𝐨𝐮'𝐫𝐞 𝐚𝐫𝐫𝐢𝐯𝐞𝐝 𝐚𝐭 𝐭𝐡𝐞 𝐩𝐥𝐚𝐜𝐞, 𝐜𝐡𝐞𝐜𝐤 𝐲𝐨𝐮𝐫 𝐖𝐀 𝐆𝐫𝐨𝐮𝐩 𝐢𝐦𝐦𝐞𝐝𝐢𝐚𝐭𝐞𝐥𝐲. </div></article>
+</section>
+<div class="stepnav"><button class="back" disabled="" id="prev" style="opacity: 0.35;" type="button">← BACK</button><span class="small" id="counter">1 / 3</span><button class="next" id="next" type="button">NEXT →</button></div><div id="toast" role="status">✓ Perubahan tersimpan di browser ini.</div>
+<footer contenteditable="false" data-edit="footer" spellcheck="false">𝐂𝐆 𝐅𝐔𝐍 𝐖𝐄𝐄𝐊 𝟒 : "𝐑𝐔𝐍𝐍𝐈𝐍𝐆 𝐇𝐔𝐍𝐓"</footer>
+</div>
+<script>
+(function(){
+"use strict";
+const defaults={text:{},waLink:"",theme:{bg:"#0b1023",surface:"#151e38",card:"#1c2948",ink:"#f7f6ff",accent:"#e8c98a",font:"Georgia,serif",radius:24}};
+const $=id=>document.getElementById(id),editables=[...document.querySelectorAll("[data-edit]")];
+const original={};editables.forEach(el=>original[el.dataset.edit]=el.innerText);
+defaults.text=original;let data={"text":{"brand":"𝐑𝐔𝐍𝐍𝐈𝐍𝐆 𝐇𝐔𝐍𝐓 : THE FIVE PIECES","p0k":"STEP 01 / JOIN THE TEAM","p0h":"𝕋𝕙𝕖 𝔾𝕒𝕞𝕖 𝕊𝕥𝕒𝕣𝕥𝕤 ℍ𝕖𝕣𝕖.","p0b":"𝐁𝐞𝐟𝐨𝐫𝐞 𝐬𝐭𝐚𝐫𝐭𝐢𝐧𝐠 𝐭𝐡𝐞 𝐠𝐚𝐦𝐞, 𝐩𝐥𝐞𝐚𝐬𝐞 𝐣𝐨𝐢𝐧 𝐭𝐡𝐞 𝐖𝐡𝐚𝐭𝐬𝐀𝐩𝐩 𝐆𝐫𝐨𝐮𝐩. 𝐀𝐥𝐥 𝐭𝐡𝐞 𝐝𝐢𝐫𝐞𝐜𝐭𝐢𝐨𝐧 & 𝐢𝐧𝐟𝐨 𝐰𝐢𝐥𝐥 𝐛𝐞 𝐜𝐨𝐦𝐦𝐮𝐧𝐢𝐜𝐚𝐭𝐞𝐝 𝐭𝐡𝐞𝐫𝐞. ","waText":"JOIN WHATSAPP GROUP ↗","p0note":"𝐀𝐟𝐭𝐞𝐫 𝐣𝐨𝐢𝐧𝐢𝐧𝐠, 𝐩𝐥𝐞𝐚𝐬𝐞 𝐜𝐨𝐦𝐞 𝐛𝐚𝐜𝐤 𝐚𝐧𝐝 𝐩𝐫𝐞𝐬𝐬 𝐍𝐄𝐗𝐓. ","p1k":"STEP 02 / THE MISSION","p1h":"ℍ𝔼𝕃𝕃𝕆! :𝔻","p1b":"Welcome to THE FIVE PIECES! You will be divided into TWO TEAMS. This is a GROUP challenge, not an individual game. Work together with your teammates to discover clues, solve Bible riddles, and collect five message pieces across five locations. Every team member has a role. Stay together, listen to your Game Master, and help one another. Each team must collect its own five pieces and complete the final mission together. Good luck, Team 1 and Team 2!","p2k":"STEP 03 / YOUR FIRST DESTINATION","p2h":"𝟙𝕤𝕥 ℙ𝕠𝕤𝕥 : 𝕋ℍ𝔼 𝕊𝔼𝔼𝔻","p2b":"𝐏𝐎𝐒𝐓 𝐂𝐋𝐔𝐄:\nI can't speak, but inside me, countless stories are unfolding in the form of writing. Millions of words are poured out of my body.","p2note":"𝐇𝐚𝐩𝐩𝐲 𝐬𝐞𝐚𝐫𝐜𝐡𝐢𝐧𝐠! 𝐖𝐡𝐞𝐧 𝐲𝐨𝐮'𝐫𝐞 𝐚𝐫𝐫𝐢𝐯𝐞𝐝 𝐚𝐭 𝐭𝐡𝐞 𝐩𝐥𝐚𝐜𝐞, 𝐜𝐡𝐞𝐜𝐤 𝐲𝐨𝐮𝐫 𝐖𝐀 𝐆𝐫𝐨𝐮𝐩 𝐢𝐦𝐦𝐞𝐝𝐢𝐚𝐭𝐞𝐥𝐲. ","footer":"𝐂𝐆 𝐅𝐔𝐍 𝐖𝐄𝐄𝐊 𝟒 : \"𝐑𝐔𝐍𝐍𝐈𝐍𝐆 𝐇𝐔𝐍𝐓\""},"waLink":"https://chat.whatsapp.com/GkcHrnjDP7sIsY7UEXOXa0?s=cl&p=a&mlu=4&ilr=4&iam=0","theme":{"bg":"#002f7a","surface":"#000000","card":"#000000","ink":"#ffffff","accent":"#c2c2c2","font":"'Trebuchet MS',sans-serif","radius":35}},page=0,editing=false;
+
+function notify(s){$("toast").textContent=s}
+function persist(){try{localStorage.setItem("five-pieces-opening-v1",JSON.stringify(data));notify("✓ Perubahan tersimpan di browser ini.")}catch(e){notify("Browser membatasi penyimpanan. Gunakan Backup JSON.")}}
+function validWa(url){try{const u=new URL(url);return u.protocol==="https:"&&u.hostname==="chat.whatsapp.com"&&u.pathname.length>1}catch(e){return false}}
+function apply(){for(const [k,v] of Object.entries(data.theme))document.documentElement.style.setProperty("--"+k,k==="radius"?v+"px":v);
+editables.forEach(el=>{el.innerText=data.text[el.dataset.edit]??original[el.dataset.edit];el.contentEditable=editing?"true":"false";el.spellcheck=editing});
+$("waLink").value=data.waLink;$("waButton").href=validWa(data.waLink)?data.waLink:"#";$("waButton").classList.toggle("disabled",!validWa(data.waLink));$("waButton").setAttribute("aria-disabled",String(!validWa(data.waLink)));
+for(const k of ["bg","surface","card","ink","accent","font","radius"])$(k).value=data.theme[k];
+document.body.classList.toggle("editing",editing);$("editToggle").textContent=editing?"✓ Selesai edit":"✏️ Edit semua";show()}
+function show(){document.querySelectorAll(".page").forEach((el,i)=>el.classList.toggle("active",i===page));document.querySelectorAll(".progress span").forEach((el,i)=>el.classList.toggle("current",i<=page));$("counter").textContent=(page+1)+" / 3";$("prev").disabled=page===0;$("prev").style.opacity=page===0?".35":"1";$("next").textContent=page===2?"✓ FINISH":"NEXT →"}
+editables.forEach(el=>el.addEventListener("blur",()=>{if(!editing)return;data.text[el.dataset.edit]=el.innerText;persist()}));
+$("waButton").addEventListener("click",e=>{if(editing){e.preventDefault();notify("Sedang edit: ubah teks tombol dengan klik tulisannya; atur URL lewat panel editor.");return}if(!validWa(data.waLink)){e.preventDefault();notify("Link grup WhatsApp belum diisi oleh panitia.")}});
+$("editToggle").onclick=()=>{editing=!editing;apply();notify(editing?"Mode edit aktif. Klik tulisan apa pun untuk mengubahnya.":"Mode peserta aktif.")};
+$("save").onclick=persist;
+$("prev").onclick=()=>{if(page>0){page--;show()}};
+$("next").onclick=()=>{if(page<2){page++;show()}else notify("Selesai! Tunggu arahan Game Master untuk membuka website Pos 1.")};
+$("waLink").oninput=e=>{data.waLink=e.target.value.trim();$("waButton").href=validWa(data.waLink)?data.waLink:"#";$("waButton").classList.toggle("disabled",!validWa(data.waLink));persist()};
+for(const k of ["bg","surface","card","ink","accent","font","radius"])$(k).addEventListener("input",e=>{data.theme[k]=k==="radius"?Number(e.target.value):e.target.value;document.documentElement.style.setProperty("--"+k,k==="radius"?data.theme[k]+"px":data.theme[k]);persist()});
+function download(name,content,type){const url=URL.createObjectURL(new Blob([content],{type})),a=document.createElement("a");a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000)}
+$("backup").onclick=()=>{persist();download("opening-project-backup.json",JSON.stringify(data,null,2),"application/json")};
+$("export").onclick=()=>{persist();const copy=document.documentElement.cloneNode(true);const script=copy.querySelector("script");const json=JSON.stringify(data).replace(/</g,"\\u003c");script.textContent=script.textContent.replace('let data=structuredClone(defaults),page=0,editing=false;',`let data=${json},page=0,editing=false;`).replace('try{const saved=JSON.parse(localStorage.getItem("five-pieces-opening-v1"));if(saved&&saved.text&&saved.theme)data={...structuredClone(defaults),...saved,theme:{...defaults.theme,...saved.theme},text:{...original,...saved.text}}}catch(e){}','');download("website-1-opening-custom.html","<!DOCTYPE html>\n"+copy.outerHTML,"text/html;charset=utf-8");notify("✓ Website HTML versi terbarumu sudah diunduh.")};
+$("import").onclick=()=>$("file").click();$("file").onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const x=JSON.parse(await f.text());if(!x||!x.text||!x.theme||typeof x.waLink!=="string")throw Error("Format backup tidak valid");data={...structuredClone(defaults),...x,theme:{...defaults.theme,...x.theme},text:{...original,...x.text}};persist();apply();notify("✓ Backup berhasil diimpor.")}catch(err){notify("Gagal impor: "+err.message)}e.target.value=""};
+$("reset").onclick=()=>{if(confirm("Kembalikan semua teks dan desain ke versi awal?")){data=structuredClone(defaults);persist();apply()}};
+$("clear").onclick=()=>{if(confirm("Hapus penyimpanan lokal?")){localStorage.removeItem("five-pieces-opening-v1");notify("Data lokal dihapus. Tampilan sekarang belum direset.")}};
+apply();
+})();
+</script><script>(function(){document.querySelectorAll('.toolbar,.tools,.editor').forEach(el=>el.remove());document.body.classList.remove('editing');document.querySelectorAll('[contenteditable]').forEach(el=>el.setAttribute('contenteditable','false'));})();</script></body></html>
